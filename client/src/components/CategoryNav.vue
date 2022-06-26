@@ -37,6 +37,38 @@
 <script>
 export default {
   name: "CategoryNav",
+  data: function () {
+    return {
+      //create a categories array to hold the fetched categories
+      categories: [],
+    };
+  },
+  created() {
+    this.fetchCategoties();
+  },
+  methods: {
+    fetchCategoties() {
+      //this refers to the component
+      const vm = this;
+      const baseUrl = "http://localhost:8080/MengyiBookstoreFetch/api";
+      return (
+        fetch(baseUrl + "/categories")
+          .then((response) => response.json())
+          //  passing in the parsed JSON
+          .then((data) => {
+            console.log("Data: ", data);
+            //if we use this instead of this
+            //we refer to the object that the function is run on
+            //but we need to refer to the component
+            //assign it to the categories component
+            vm.categories = data;
+          })
+          .catch((reason) => {
+            console.log("Error: " + reason);
+          })
+      );
+    },
+  },
 };
 </script>
 
