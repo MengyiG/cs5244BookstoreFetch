@@ -7,7 +7,7 @@
       </h2>
       <!--  button    -->
       <button class="hero-button">
-        <router-link to="../category/classics">
+        <router-link to="../category/Classics">
           <span>Start to Browse</span>
         </router-link>
       </button>

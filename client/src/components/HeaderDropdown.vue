@@ -13,7 +13,7 @@
               <router-link to="/">About Us</router-link>
             </li>
             <li class="main-menu-item">
-              <router-link to="../category/classics">Categories</router-link>
+              <router-link to="../category/Classics">Categories</router-link>
             </li>
             <li class="main-menu-item">
               <router-link to="/">Shipping</router-link>
