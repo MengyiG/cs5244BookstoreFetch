@@ -9,7 +9,6 @@ const apiUrl =
 export default {
   fetchCategories() {
     const url = apiUrl + "/categories";
-
     console.log("GET from " + url);
     return fetch(url)
       .then((response) => {

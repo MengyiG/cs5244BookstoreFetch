@@ -44,11 +44,13 @@ export default {
       categories: [],
     };
   },
-  created() {
-    this.fetchCategoties();
+  created: function () {
+    console.log("Begin fetchCategories...");
+    this.fetchCategories();
+    console.log("End fetchCategories...");
   },
   methods: {
-    fetchCategoties() {
+    fetchCategories() {
       //this refers to the component
       const vm = this;
       ApiService.fetchCategories()
