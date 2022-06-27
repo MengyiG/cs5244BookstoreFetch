@@ -36,7 +36,7 @@
   --secondary-background-color: white;
 
   /* read now btn bg */
-  --overlay-background:rgba(0, 0, 0, 0.51);
+  --overlay-background: rgba(0, 0, 0, 0.62);
 }
 
 /* RESET */
@@ -235,7 +235,6 @@ body {
   cursor: pointer;
   background-color: var(--primary-color);
   color: var(--default-font-family);
-  opacity: 90%;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 
