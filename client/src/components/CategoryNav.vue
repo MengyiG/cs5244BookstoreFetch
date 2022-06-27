@@ -2,6 +2,16 @@
   <nav class="category-nav">
     <ul class="category-buttons">
       <li class="button selected-category-button">Classics</li>
+      <li
+        v-for="category in categories"
+        :key="category.categoryId"
+        class="button unselected-category-button"
+      >
+        <router-link :to="'../category/' + category.name"
+          >{{ category.name }}
+        </router-link>
+      </li>
+      <!--      codes before binding
       <router-link
         to="../category/fantasy"
         tag="li"
@@ -9,27 +19,7 @@
       >
         Fantasy
       </router-link>
-      <router-link
-        to="../category/wellness"
-        tag="li"
-        class="button unselected-category-button"
-      >
-        Wellness
-      </router-link>
-      <router-link
-        to="../category/comedy"
-        tag="li"
-        class="button unselected-category-button"
-      >
-        Comedy
-      </router-link>
-      <router-link
-        to="../category/romance"
-        tag="li"
-        class="button unselected-category-button"
-      >
-        Romance
-      </router-link>
+      -->
     </ul>
   </nav>
 </template>
@@ -104,5 +94,10 @@ export default {
 .button.unselected-category-button:active {
   font-weight: 900;
   background-color: var(--primary-color);
+}
+
+li a {
+  color: var(--default-text-color);
+  text-decoration: none;
 }
 </style>
