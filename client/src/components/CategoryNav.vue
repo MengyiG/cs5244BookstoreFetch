@@ -55,7 +55,9 @@ export default {
       const vm = this;
       ApiService.fetchCategories()
         .then((data) => {
+          console.log("Begin fetchCategories...");
           console.log("Data: ", data);
+          console.log("End fetchCategories...");
           //if we use this instead of this
           //we refer to the object that the function is run on
           //but we need to refer to the component
