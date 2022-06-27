@@ -1,16 +1,25 @@
 <template>
   <nav class="category-nav">
     <ul class="category-buttons">
-      <li class="button selected-category-button">Classics</li>
-      <li
-        v-for="category in categories"
-        :key="category.categoryId"
-        class="button unselected-category-button"
+      <template v-for="category in categories">
+        <li
+          v-if="category.name === $route.params.name"
+          :key="category.categoryId"
+          class="button selected-category-button"
+        >
+          {{ category.name }}
+        </li>
+        <li
+          v-else
+          :key="category.categoryId"
+          class="button unselected-category-button"
+        >
+          <router-link :to="'../category/' + category.name"
+            >{{ category.name }}
+          </router-link>
+        </li></template
       >
-        <router-link :to="'../category/' + category.name"
-          >{{ category.name }}
-        </router-link>
-      </li>
+
       <!--      codes before binding
       <router-link
         to="../category/fantasy"
@@ -83,6 +92,7 @@ export default {
 
 .button.selected-category-button {
   background-color: var(--primary-color);
+  font-weight: bold;
 }
 
 .button.unselected-category-button,
@@ -92,7 +102,7 @@ export default {
 
 .button.unselected-category-button:hover,
 .button.unselected-category-button:active {
-  font-weight: 900;
+  font-weight: bold;
   background-color: var(--primary-color);
 }
 
