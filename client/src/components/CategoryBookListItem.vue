@@ -53,15 +53,15 @@ export default {
   background-color: var(--secondary-background-color);
   padding: 1em;
   width: 300px;
-  height: 225pt;
+  height: 226pt;
 }
 
 .book-image {
   display: flex;
   flex-direction: column;
-  max-width: 85px;
+  width: 85px;
   align-self: center;
-  min-height: 80pt;
+  height: 80pt;
 }
 
 .book-title {
