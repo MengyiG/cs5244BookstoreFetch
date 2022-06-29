@@ -2,7 +2,7 @@
   <li class="book-box">
     <div class="book-image">
       <img
-        :src="require('@/assets/images/books/' + book.imageFile)"
+        :src="require('@/assets/images/books/' + bookImageFileName(book))"
         :alt="book.title"
       />
       <div v-if="book.isPublic" class="overlay-button">
@@ -28,6 +28,14 @@ export default {
     book: {
       type: Object,
       required: true,
+    },
+  },
+  methods: {
+    bookImageFileName: function (book) {
+      let name = book.title;
+      name = name.replace(/[.,/#!$%^&*;:{}=\-_`~'()]/g, "");
+      console.log(name);
+      return `${name}.jpeg`;
     },
   },
   // data: function () {
