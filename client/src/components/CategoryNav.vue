@@ -7,6 +7,8 @@
           :key="category.categoryId"
           class="button selected-category-button"
         >
+          <!--use key to let vue keep track of each node's identity-->
+          <!--we have category id and name but we only need to display name-->
           {{ category.name }}
         </li>
         <li
@@ -17,25 +19,14 @@
           <router-link :to="'../category/' + category.name"
             >{{ category.name }}
           </router-link>
-        </li></template
-      >
-
-      <!--      codes before binding
-      <router-link
-        to="../category/fantasy"
-        tag="li"
-        class="button unselected-category-button"
-      >
-        Fantasy
-      </router-link>
-      -->
+        </li>
+      </template>
     </ul>
   </nav>
 </template>
 
 <script>
 import ApiService from "@/services/ApiService";
-
 export default {
   name: "CategoryNav",
   data: function () {
@@ -55,10 +46,8 @@ export default {
       const vm = this;
       ApiService.fetchCategories()
         .then((data) => {
-          console.log("Begin fetchCategories...");
-          console.log("Data: ", data);
-          console.log("End fetchCategories...");
-          //if we use this instead of this
+          console.log("Category: ", data);
+          //if we use this instead of vm
           //we refer to the object that the function is run on
           //but we need to refer to the component
           //assign it to the categories component

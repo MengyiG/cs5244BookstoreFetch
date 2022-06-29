@@ -1,12 +1,12 @@
 <template>
   <div class="category-book-list">
     <ul>
-      <category-book-list-item :book="books[0]"></category-book-list-item>
-      <category-book-list-item :book="books[1]"></category-book-list-item>
-      <category-book-list-item :book="books[2]"></category-book-list-item>
-      <category-book-list-item :book="books[3]"></category-book-list-item>
-      <category-book-list-item :book="books[4]"></category-book-list-item>
-      <category-book-list-item :book="books[5]"></category-book-list-item>
+      <!--      <category-book-list-item :book="books[0]"></category-book-list-item>-->
+      <template v-for="book in books">
+        <li :key="book.bookId">
+          <category-book-list-item :book="book"></category-book-list-item>
+        </li>
+      </template>
     </ul>
   </div>
 </template>
