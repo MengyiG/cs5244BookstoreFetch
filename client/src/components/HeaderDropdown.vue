@@ -12,9 +12,33 @@
             <li class="main-menu-item">
               <router-link to="/">About Us</router-link>
             </li>
+
             <li class="main-menu-item">
-              <router-link to="../category/Classics">Categories</router-link>
+              <div class="onclick-menu">
+                Categories
+                <ul class="onclick-menu-content">
+                  <template v-for="category in categories">
+                    <li
+                      v-if="category.name === $route.params.name"
+                      :key="category.categoryId"
+                      class="button selected-category-button"
+                    >
+                      {{ category.name }}
+                    </li>
+                    <li
+                      v-else
+                      :key="category.categoryId"
+                      class="button unselected-category-button"
+                    >
+                      <router-link :to="'../category/' + category.name"
+                        >{{ category.name }}
+                      </router-link>
+                    </li>
+                  </template>
+                </ul>
+              </div>
             </li>
+
             <li class="main-menu-item">
               <router-link to="/">Shipping</router-link>
             </li>
@@ -29,14 +53,33 @@
 </template>
 
 <script>
+import ApiService from "@/services/ApiService";
+
 export default {
   name: "HeaderDropdownMenu",
   data: function () {
     return {
+      categories: [],
       mainMenuOpen: false,
     };
   },
+  created: function () {
+    console.log("Hamburger menu begins fetchCategories...");
+    this.fetchCategories();
+    console.log("End fetchCategories...");
+  },
   methods: {
+    fetchCategories() {
+      const vm = this;
+      ApiService.fetchCategories()
+        .then((data) => {
+          console.log("Category: ", data);
+          vm.categories = data;
+        })
+        .catch((reason) => {
+          console.log("Error: " + reason);
+        });
+    },
     toggleMainMenu() {
       this.mainMenuOpen = !this.mainMenuOpen;
     },
@@ -183,5 +226,35 @@ export default {
   border-radius: 50px;
   transition: 0.65s;
   cursor: pointer;
+}
+
+.onclick-menu:focus .onclick-menu-content {
+  visibility: visible;
+  display: inherit;
+}
+.onclick-menu-content {
+  display: inherit;
+  margin-top: 1rem;
+}
+.onclick-menu-content li {
+  display: block;
+  list-style: none;
+  font-size: medium;
+}
+
+.button.selected-category-button {
+  background-color: var(--primary-background-color);
+  font-weight: bold;
+  border-radius: 50px;
+}
+.button.unselected-category-button,
+.button.unselected-category-button:visited {
+  background-color: inherit;
+}
+.button.unselected-category-button:hover,
+.button.unselected-category-button:active {
+  font-weight: bold;
+  background-color: var(--overlay-background);
+  border-radius: 50px;
 }
 </style>

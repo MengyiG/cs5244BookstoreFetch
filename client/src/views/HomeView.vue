@@ -1,6 +1,7 @@
 <template>
   <div class="hero-image">
     <div class="hero-text-and-button">
+      <!--      hero text-->
       <h1 class="hero-title">Welcome to Your Dedicated Bookstore</h1>
       <h2 class="hero-subtitle">
         where readers find quietness and tranquility
